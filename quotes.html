@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        blockquote {
+            font-size: 1.2em;
+            font-style: italic;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin: 10px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Quotes & Links Web Program</h1>
+
+    <!-- Section to display the Quote of the Day -->
+    <div class="section">
+        <h2>Quote of the Day</h2>
+        <div id="quote-container"></div>
+    </div>
+
+    <!-- Section to display the initial list of website links -->
+    <div class="section">
+        <h2>Original Favorite Websites</h2>
+        <ul id="original-links"></ul>
+    </div>
+
+    <!-- Section to display the final revised list of website links -->
+    <div class="section">
+        <h2>Revised Favorite Websites</h2>
+        <ul id="revised-links"></ul>
+    </div>
+
+    <script>
+        // ==========================================
+        // PART 1: QUOTE OF THE DAY PROGRAM
+        // ==========================================
+
+        // 1. Create an array with 5 quotes of the day
+        const quotes = [
+            "The journey of a thousand miles begins with one step.",
+            "Believe you can and you're halfway there.",
+            "An unexamined life is not worth living.",
+            "In the middle of difficulty lies opportunity.",
+            "Success is not final, failure is not fatal: it is the courage to continue that counts."
+        ];
+
+        // 2. Prompt the user to enter a number
+        let userNumberInput = prompt("Enter a number to get your Quote of the Day:");
+        let userNumber = parseInt(userNumberInput);
+
+        // Fallback calculation in case the user cancels or submits non-numeric values
+        if (isNaN(userNumber)) {
+            userNumber = 0; 
+        }
+
+        // 3. Take the provided number, divide by 5 and get the remainder (modulus)
+        let quoteIndex = userNumber % 5;
+
+        // Display the selected quote on the page
+        const quoteContainer = document.getElementById("quote-container");
+        quoteContainer.innerHTML = `<blockquote>"${quotes[quoteIndex]}" (Index calculated: ${quoteIndex})</blockquote>`;
+
+
+        // ==========================================
+        // PART 2: WEBSITE URL ARRAY MANIPULATION
+        // ==========================================
+
+        // 1. Create an array of 3 favorite website URLs
+        const favoriteWebsites = [
+            "https://gemini.google.com",
+            "https://github.com",
+            "https://wikipedia.org"
+        ];
+
+        // Write them out on the web page as working links (Original List)
+        const originalLinksUl = document.getElementById("original-links");
+        favoriteWebsites.forEach(url => {
+            originalLinksUl.innerHTML += `<li><a href="${url}" target="_blank">${url}</a></li>`;
+        });
+
+        // 2. Prompt the user to enter their favorite website
+        let userWebsite = prompt("Enter your favorite website URL (include http:// or https://):");
+        
+        // Add it to the end of the array if a valid response is given
+        if (userWebsite && userWebsite.trim() !== "") {
+            favoriteWebsites.push(userWebsite.trim());
+        } else {
+            favoriteWebsites.push("https://example.com"); // Fallback
+        }
+
+        // 3. Delete the first website from the array
+        favoriteWebsites.shift();
+
+        // 4. Write out the new list of links to the page from the revised array
+        const revisedLinksUl = document.getElementById("revised-links");
+        favoriteWebsites.forEach(url => {
+            revisedLinksUl.innerHTML += `<li><a href="${url}" target="_blank">${url}</a></li>`;
+        });
+    </script>
+
+</body>
+</html>
