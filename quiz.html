@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        /* CSS Formatting */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quiz-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #score-display {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            body {
+            padding: 10px;
+        }
+        nav ul {
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        <!-- Title and Heading -->
+        <h1>Knowledge Quiz</h1>
+        <p>Press the button below to start the quiz chellenge.</p>
+
+        <!-- Button to execute the function -->
+        <button onclick="startQuiz()">Start Quiz</button>
+
+        <!-- Area to display the cumulative score -->
+        <div id="score-display"></div>
+    </div>
+
+    <!-- Link your external JavaScript file here -->
+    <script src="quiz.js" defer></script>
+
+</body>
+</html>
