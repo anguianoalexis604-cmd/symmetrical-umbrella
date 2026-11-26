@@ -133,6 +133,8 @@
           $('#zipErr').text('');
           $('#emailErr').text('');
           $('#email2Err').text('');
+          event.preventDefault();
+          window.location.href = 'thanks.html';
         });
 
         $('#name, #address, #city, #shipaddr, #shipcity, #shipzip, #zip, #email, #email2').on('input', function () {
@@ -231,7 +233,6 @@
         $('#shipstate').on('change', updateOrderTotals);
         updateOrderTotals();
       });
-
     </script>
 
 	</head>
